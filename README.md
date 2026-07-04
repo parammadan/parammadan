@@ -68,6 +68,13 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
+**Microsoft 365 / Power Platform**
+![Copilot Studio](https://img.shields.io/badge/Copilot%20Studio-8661C5?style=for-the-badge&logo=microsoft&logoColor=white)
+![Power Automate](https://img.shields.io/badge/Power%20Automate-0066FF?style=for-the-badge&logo=powerautomate&logoColor=white)
+![Microsoft Graph](https://img.shields.io/badge/Microsoft%20Graph-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Entra ID](https://img.shields.io/badge/Azure%20Entra%20ID-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Dataverse](https://img.shields.io/badge/Dataverse-742774?style=for-the-badge&logo=microsoft&logoColor=white)
+
 ---
 
 ## 📌 Focus right now
