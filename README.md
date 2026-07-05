@@ -1,7 +1,7 @@
 <h1 align="center">Param Madan</h1>
 
 <p align="center">
-  <b>AI Software Engineer</b> — agentic systems · LLM inference tooling · reasoning agents
+  <b>AI Software Engineer</b> — agentic systems · LLM inference tooling · Perception
 </p>
 
 <p align="center">
