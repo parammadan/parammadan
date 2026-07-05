@@ -31,9 +31,14 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 ## 🚀 Projects
 
 ### 🛰️ [cre-copilot](https://github.com/parammadan/cre-copilot)
-> AI-powered **multi-agent incident-response simulator**. Agents triage over Azure Data Explorer telemetry, a **deterministic confidence gate** decides when to act vs. escalate, and remediation stays **human-in-the-loop**.
+> **Multi-agent incident-response copilot** on Azure. Hosted Azure OpenAI agents triage live telemetry **read-only** over Azure Data Explorer; a **deterministic confidence + permission gate** decides act vs. escalate, with an enterprise **AI-safety layer** (blast-radius guard, prompt-injection detection, approval integrity, audit trail) and **human-in-the-loop** remediation confirmed by an independent Verifier.
 >
-> `Python` · `Azure Data Explorer` · `Azure OpenAI`
+> `Python` · `Azure OpenAI` · `Azure Data Explorer (KQL)` · `Azure Container Apps` · `Managed Identity` · `FastAPI` · `Playwright`
+
+### 🤖 [robot_edge_stack](https://github.com/parammadan/robot_edge_stack-main)
+> **Adaptive bandwidth management for edge perception.** Multi-node **ROS 2** system on **NVIDIA Jetson Orin Nano**: real-time **YOLOv8 + TensorRT** object detection with closed-loop, network-aware **FPS throttling** (NORMAL → DEGRADED → CRITICAL) that cuts bandwidth up to **67%** as the link degrades — with chaos-engineering tests for latency/loss/jitter.
+>
+> `ROS 2 Humble` · `C++17` · `Python 3.10` · `TensorRT` · `YOLOv8` · `FastDDS` · `Docker`
 
 ### ⚡ [winai-inference-profiler](https://github.com/parammadan/winai-inference-profiler)
 > Profiles **LLM inference performance** for Windows AI workloads — latency, throughput, and resource characteristics for on-device model serving.
@@ -70,6 +75,9 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Azure OpenAI](https://img.shields.io/badge/Azure%20OpenAI-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![ADX](https://img.shields.io/badge/Azure%20Data%20Explorer%20(Kusto)-0062AD?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![Container Apps](https://img.shields.io/badge/Azure%20Container%20Apps-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
@@ -84,9 +92,9 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 
 ## 📌 Focus right now
 
-- **Reliable agents** — confidence gating, escalation logic, and human-in-the-loop control so agentic systems fail safely.
+- **Reliable agents** — deterministic confidence + permission gates, blast-radius guards, and human-in-the-loop control so agentic systems fail safely.
+- **AI safety & security** — prompt-injection defense, least-privilege identity, approval integrity, and auditable, inspectable agent behavior.
 - **Windows / edge AI inference** — profiling and optimizing LLM serving for on-device workloads.
-- **Transparent reasoning** — structured chain-of-thought that can be inspected and verified, not black-boxed.
 
 ---
 
