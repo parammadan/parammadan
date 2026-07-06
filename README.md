@@ -28,6 +28,20 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 
 ---
 
+## 💼 Experience
+
+### 🎓 Massachusetts Institute of Technology — MIT Spinout & Lincoln Laboratory
+**AI Software Engineer (Co-op)** · Boston, MA · Jul 2024 – Dec 2024
+> Real-time **3D spatial perception & low-latency telemetry transport** for an autonomous **surgical-robotics** platform — safety-critical, deterministic, sub-millimeter tracking.
+> - **C++ / ROS middleware** — zero-copy **lock-free shared-memory ring buffer** + **Eigen** optical→kinematic coordinate transforms; cut sensor-fusion latency **~80 ms → negligible**.
+> - **Edge AI** — optimized a **PyTorch U-Net** semantic-segmentation model (organs / vessels vs. tools) for a **60 FPS** control loop with **OpenCV** preprocessing → **+15%** real-time tracking reliability.
+> - **GPU profiling** — diagnosed frame drops with **NVIDIA Nsight Systems**; **pinned memory + async CUDA streams** overlapped Host↔Device transfer with compute, eliminating the PCIe bottleneck for deterministic multi-GPU throughput.
+> - **Engineering rigor** — CMake · GoogleTest · Docker · SonarQube · Git, with hardware-in-the-loop testing each sprint; edge-case rosbags → AWS (S3 / Batch / EC2) for distributed retraining.
+>
+> `C++17` · `ROS` · `CUDA` · `Eigen` · `PyTorch` · `OpenCV` · `Nsight Systems` · `Docker` · `CMake` · `AWS`
+
+---
+
 ## 🚀 Projects
 
 ### 🛰️ [cre-copilot](https://github.com/parammadan/cre-copilot)
