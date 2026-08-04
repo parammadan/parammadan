@@ -1,7 +1,7 @@
 <h1 align="center">Param Madan</h1>
 
 <p align="center">
-  <b>AI Software Engineer</b> — agentic systems · LLM inference tooling · Perception
+  <b>AI Software Engineer</b> — agent orchestration · generative AI systems · LLM post-training & eval
 </p>
 
 <p align="center">
@@ -17,12 +17,12 @@
 
 ## 👋 About me
 
-I build **AI systems that reason and act** — multi-agent pipelines, LLM inference profiling, and chain-of-thought reasoning agents. I care about making agentic systems that are **reliable and inspectable**, not just demos: deterministic gates, human-in-the-loop checkpoints, and measurable inference performance.
+I build **agent orchestration systems** — generative AI agents that perform actions, make decisions, and hold conversations, wired to real tools and real telemetry. I care about the parts that make agents shippable, not just demos: **deterministic gates** on autonomous actions, **human-in-the-loop** approval, **measured experiments** over vibes, and **observability** you can debug from.
 
 ```text
-🔭  Building   →  a multi-agent incident-response copilot on Azure
-🌱  Learning   →  on-device / Windows AI inference, LLM eval & reliability
-🧩  Interests  →  agent orchestration, structured reasoning, inference perf
+🔭  Building   →  multi-agent orchestration on Azure (autonomous + conversational agents)
+🧪  Measuring  →  RL post-training experiments — GRPO/RLOO/PPO, honest evals, alerting
+🌱  Learning   →  agent reliability, tool-calling design, LLM eval at scale
 🎯  Open to    →  Software Engineer (AI) roles
 ```
 
@@ -31,24 +31,19 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 ## 🚀 Projects
 
 ### 🛰️ [cre-copilot](https://github.com/parammadan/cre-copilot)
-> **Multi-agent incident-response copilot** on Azure. Hosted Azure OpenAI agents triage live telemetry **read-only** over Azure Data Explorer; a **deterministic confidence + permission gate** decides act vs. escalate, with an enterprise **AI-safety layer** (blast-radius guard, prompt-injection detection, approval integrity, audit trail) and **human-in-the-loop** remediation confirmed by an independent Verifier.
+> **Multi-agent AI orchestration** for live-site incident response on Azure. Hosted Azure OpenAI agents triage real telemetry via **tool calling** over Azure Data Explorer — in a fixed pipeline or a fully **autonomous mode** where an orchestrator agent picks its own read-only tools. A **deterministic confidence + permission gate** decides act-vs-escalate behind an enterprise **AI-safety layer** (blast-radius guard, prompt-injection detection, approval integrity, audit trail); remediation is **human-in-the-loop** (Teams Adaptive Cards + approval) and confirmed by an independent Verifier agent. Plus a **conversational** "Ask CRE Copilot" mode, an eval harness for correlation quality, and structured tracing — deployed on **Azure Container Apps** with a React console.
 >
-> `Python` · `Azure OpenAI` · `Azure Data Explorer (KQL)` · `Azure Container Apps` · `Managed Identity` · `FastAPI` · `Playwright`
+> `Python` · `Azure OpenAI` · `Azure Data Explorer (KQL)` · `React + TypeScript` · `Azure Container Apps` · `Managed Identity` · `FastAPI` · `Teams`
 
-### 🤖 [robot_edge_stack](https://github.com/parammadan/robot_edge_stack-main)
-> **Adaptive bandwidth management for edge perception.** Multi-node **ROS 2** system on **NVIDIA Jetson Orin Nano**: real-time **YOLOv8 + TensorRT** object detection with closed-loop, network-aware **FPS throttling** (NORMAL → DEGRADED → CRITICAL) that cuts bandwidth up to **67%** as the link degrades — with chaos-engineering tests for latency/loss/jitter.
+### 🧪 [shoprl-fabric](https://github.com/parammadan/shoprl-fabric)
+> **RL post-training platform** for optimizing a generative AI model, built from scratch — config → rollout → reward → optimize → eval → checkpoint, with observability and alerting. **GRPO, RLOO, and PPO behind one interface** so experiments isolate exactly the algorithm; results measured at n=64 held-out and **reported honestly** (including the negative results). Verifiable reward against a ground-truth catalog — no reward model to hack. Develops on an 8 GB laptop, scales to cloud GPU unchanged.
 >
-> `ROS 2 Humble` · `C++17` · `Python 3.10` · `TensorRT` · `YOLOv8` · `FastDDS` · `Docker`
+> `Python` · `PyTorch` · `LoRA / PEFT` · `vLLM` · `RL (GRPO · RLOO · PPO)`
 
-### ⚡ [winai-inference-profiler](https://github.com/parammadan/winai-inference-profiler)
-> Profiles **LLM inference performance** for Windows AI workloads — latency, throughput, and resource characteristics for on-device model serving.
+### 🔧 Open source — [OpenSearch Dashboards · search-relevance](https://github.com/opensearch-project/dashboards-search-relevance)
+> Contributing to a **production OpenSearch plugin** used by search-relevance engineers: a **performance fix** replacing O(n²) result matching with id lookup maps ([#910](https://github.com/opensearch-project/dashboards-search-relevance/pull/910)) and **surfacing real experiment errors** instead of a generic failure message ([#911](https://github.com/opensearch-project/dashboards-search-relevance/pull/911)).
 >
-> `Python`
-
-### 🧠 [Chain-of-Thought-Reasoning-Agent](https://github.com/parammadan/Chain-of-Thought-Reasoning-Agent)
-> A step-by-step **reasoning agent** exploring structured chain-of-thought prompting for more transparent, verifiable model outputs.
->
-> `Python`
+> `TypeScript` · `React` · `OpenSearch` · `Jest`
 
 ---
 
@@ -56,16 +51,22 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 
 **Languages**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![CUDA](https://img.shields.io/badge/CUDA-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL%20%2F%20KQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
 
 **AI / ML**
 ![LLMs](https://img.shields.io/badge/LLMs%20%2F%20Agents-412991?style=for-the-badge&logo=openai&logoColor=white)
-![MCP](https://img.shields.io/badge/MCP%20%2F%20Function%20Calling-000000?style=for-the-badge&logo=anthropic&logoColor=white)
+![MCP](https://img.shields.io/badge/MCP%20%2F%20Tool%20Calling-000000?style=for-the-badge&logo=anthropic&logoColor=white)
 ![RAG](https://img.shields.io/badge/RAG%20%2F%20Vector%20Search-FF6F00?style=for-the-badge&logo=databricks&logoColor=white)
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![RL](https://img.shields.io/badge/RL%20Post--training%20(GRPO%2FRLOO%2FPPO)-8B0000?style=for-the-badge&logo=pytorch&logoColor=white)
 ![LLM Eval](https://img.shields.io/badge/LLM%20Evaluation-150458?style=for-the-badge&logo=weightsandbiases&logoColor=white)
+
+**Frontend**
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
 
 **Robotics / Perception**
 ![ROS2](https://img.shields.io/badge/ROS2-22314E?style=for-the-badge&logo=ros&logoColor=white)
@@ -85,6 +86,7 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 ![Copilot Studio](https://img.shields.io/badge/Copilot%20Studio-8661C5?style=for-the-badge&logo=microsoft&logoColor=white)
 ![Power Automate](https://img.shields.io/badge/Power%20Automate-0066FF?style=for-the-badge&logo=powerautomate&logoColor=white)
 ![Microsoft Graph](https://img.shields.io/badge/Microsoft%20Graph-0078D4?style=for-the-badge&logo=microsoft&logoColor=white)
+![Teams](https://img.shields.io/badge/Teams%20%2F%20Adaptive%20Cards-6264A7?style=for-the-badge&logo=microsoftteams&logoColor=white)
 ![Entra ID](https://img.shields.io/badge/Azure%20Entra%20ID-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
 ![Dataverse](https://img.shields.io/badge/Dataverse-742774?style=for-the-badge&logo=microsoft&logoColor=white)
 
@@ -92,9 +94,9 @@ I build **AI systems that reason and act** — multi-agent pipelines, LLM infere
 
 ## 📌 Focus right now
 
-- **Reliable agents** — deterministic confidence + permission gates, blast-radius guards, and human-in-the-loop control so agentic systems fail safely.
-- **AI safety & security** — prompt-injection defense, least-privilege identity, approval integrity, and auditable, inspectable agent behavior.
-- **Windows / edge AI inference** — profiling and optimizing LLM serving for on-device workloads.
+- **Agent orchestration** — conversational *and* autonomous agents: tool selection, multi-agent handoff, and the guardrails (deterministic gates, capped steps, read-only toolsets) that make autonomy safe.
+- **Experiments & evaluation** — designing runs that actually isolate the change: held-out evals at honest sample sizes, negative results reported, alerting validated against real failures.
+- **Reliability, performance, observability** — structured tracing, prompt-injection defense, least-privilege identity, graceful degradation, and measured performance work (O(n²) → O(n) fixes in production OSS).
 
 ---
 
