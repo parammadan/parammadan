@@ -1,11 +1,12 @@
 <h1 align="center">Param Madan</h1>
 
 <p align="center">
-  <b>AI Software Engineer</b> — agent orchestration · generative AI systems · LLM post-training & eval
+  <b>AI Software Engineer</b> — LLM post-training & eval · generative AI data platforms · agent orchestration
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/ex--MIT-A31F34?style=for-the-badge&logoColor=white" alt="ex-MIT">
+  <img src="https://img.shields.io/badge/OpenSearch%20Contributor-005EB8?style=for-the-badge&logo=opensearch&logoColor=white" alt="OpenSearch Contributor">
 </p>
 
 <p align="center">
@@ -17,28 +18,30 @@
 
 ## 👋 About me
 
-I build **agent orchestration systems** — generative AI agents that perform actions, make decisions, and hold conversations, wired to real tools and real telemetry. I care about the parts that make agents shippable, not just demos: **deterministic gates** on autonomous actions, **human-in-the-loop** approval, **measured experiments** over vibes, and **observability** you can debug from.
+I build **foundational AI systems for shopping-style agents** — from RL post-training on a real LLM to the data platform that measures whether it's actually working. I care about the parts that make model changes trustworthy, not just demos: **verifiable rewards** instead of a hackable reward model, **pre-registered experiments with honest negative results**, **behavioral telemetry** (event streaming, funnels, friction metrics) that catches regressions offline evals miss, and **deterministic safety gates** on autonomous actions.
 
 ```text
-🔭  Building   →  multi-agent orchestration on Azure (autonomous + conversational agents)
-🧪  Measuring  →  RL post-training experiments — GRPO/RLOO/PPO, honest evals, alerting
-🌱  Learning   →  agent reliability, tool-calling design, LLM eval at scale
-🎯  Open to    →  Software Engineer (AI) roles
+🔭  Building   →  RL post-training + behavioral-data platform for a generative shopping agent
+🧪  Measuring  →  GRPO/RLOO/PPO experiments, offline eval vs. live behavioral replay, honest negative results
+🌱  Learning   →  ML platform engineering at scale — streaming ingestion, self-service extraction/training
+🎯  Open to    →  Software Dev Engineer (AI) roles
 ```
 
 ---
 
 ## 🚀 Projects
 
+### 🛍️ [PennyPilot + PennyData](https://github.com/parammadan/pennypilot)
+> A **multi-turn, multilingual RL shopping agent** and the **behavioral-data platform** built to prove it actually improved. SFT (LoRA) → **RLOO post-training** with a **verifiable reward** against a ground-truth catalog (no reward model to hack) and a **structural safety gate** — cart actions without a prior permission grant are impossible to reward, 0 violations across every eval. Real bugs found by dogfooding the agent were fixed through a **pre-registered, guardrail-gated data-recipe loop** — including an actual rollback (v1 broke the model) and an actual "not shipped" call (v2 hit its target metric but breached a guardrail) — before the accepted recipe (v3) shipped a model that topped *both* the offline eval **and** live behavioral replay, resolving a case where the two had been ranking models **oppositely**.
+>
+> Behind the agent: **Kafka → S3/DuckDB** streaming + batch ingestion, a behavioral-intelligence layer (funnels, friction metrics, deterministic failure attribution with evidence citations), and a self-service ML layer (login, extraction requests, real Slurm training-job submission) with **PII scrubbing** and **admin-gated SQL** — the ML platform half of the JD, not just the model half.
+>
+> `Python` · `PyTorch` · `LoRA / PEFT` · `RL (RLOO · GRPO · PPO)` · `Kafka` · `S3 · DuckDB` · `React + TypeScript`
+
 ### 🛰️ [cre-copilot](https://github.com/parammadan/cre-copilot)
 > **Multi-agent AI orchestration** for live-site incident response on Azure. Hosted Azure OpenAI agents triage real telemetry via **tool calling** over Azure Data Explorer — in a fixed pipeline or a fully **autonomous mode** where an orchestrator agent picks its own read-only tools. A **deterministic confidence + permission gate** decides act-vs-escalate behind an enterprise **AI-safety layer** (blast-radius guard, prompt-injection detection, approval integrity, audit trail); remediation is **human-in-the-loop** (Teams Adaptive Cards + approval) and confirmed by an independent Verifier agent. Plus a **conversational** "Ask CRE Copilot" mode, an eval harness for correlation quality, and structured tracing — deployed on **Azure Container Apps** with a React console.
 >
 > `Python` · `Azure OpenAI` · `Azure Data Explorer (KQL)` · `React + TypeScript` · `Azure Container Apps` · `Managed Identity` · `FastAPI` · `Teams`
-
-### 🧪 [shoprl-fabric](https://github.com/parammadan/shoprl-fabric)
-> **RL post-training platform** for optimizing a generative AI model, built from scratch — config → rollout → reward → optimize → eval → checkpoint, with observability and alerting. **GRPO, RLOO, and PPO behind one interface** so experiments isolate exactly the algorithm; results measured at n=64 held-out and **reported honestly** (including the negative results). Verifiable reward against a ground-truth catalog — no reward model to hack. Develops on an 8 GB laptop, scales to cloud GPU unchanged.
->
-> `Python` · `PyTorch` · `LoRA / PEFT` · `vLLM` · `RL (GRPO · RLOO · PPO)`
 
 ### 🔧 Open source — [OpenSearch Dashboards · search-relevance](https://github.com/opensearch-project/dashboards-search-relevance)
 > Contributing to a **production OpenSearch plugin** used by search-relevance engineers: a **performance fix** replacing O(n²) result matching with id lookup maps ([#910](https://github.com/opensearch-project/dashboards-search-relevance/pull/910)) and **surfacing real experiment errors** instead of a generic failure message ([#911](https://github.com/opensearch-project/dashboards-search-relevance/pull/911)).
@@ -94,9 +97,9 @@ I build **agent orchestration systems** — generative AI agents that perform ac
 
 ## 📌 Focus right now
 
-- **Agent orchestration** — conversational *and* autonomous agents: tool selection, multi-agent handoff, and the guardrails (deterministic gates, capped steps, read-only toolsets) that make autonomy safe.
-- **Experiments & evaluation** — designing runs that actually isolate the change: held-out evals at honest sample sizes, negative results reported, alerting validated against real failures.
-- **Reliability, performance, observability** — structured tracing, prompt-injection defense, least-privilege identity, graceful degradation, and measured performance work (O(n²) → O(n) fixes in production OSS).
+- **RL post-training for LLMs** — GRPO/RLOO/PPO behind one interface, verifiable rewards, pre-registered experiments with honest negative results, forgetting-mitigation via rehearsal.
+- **ML data platforms** — streaming + batch ingestion (Kafka/S3/DuckDB), behavioral telemetry that catches what offline eval misses, self-service extraction/training with governance (PII scrubbing, admin-gated SQL).
+- **Agent orchestration & safety** — deterministic gates on autonomous actions, human-in-the-loop approval, structured tracing, measured performance work (O(n²) → O(n) fixes in production OSS).
 
 ---
 
