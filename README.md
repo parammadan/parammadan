@@ -18,13 +18,13 @@
 
 ## 👋 About me
 
-I build **foundational AI systems for shopping-style agents** — from RL post-training on a real LLM to the data platform that measures whether it's actually working. I care about the parts that make model changes trustworthy, not just demos: **verifiable rewards** instead of a hackable reward model, **pre-registered experiments with honest negative results**, **behavioral telemetry** (event streaming, funnels, friction metrics) that catches regressions offline evals miss, and **deterministic safety gates** on autonomous actions.
+I build **AI systems for LLM-driven agents** — from RL post-training on a real LLM to the data platform that measures whether it's actually working. I care about the parts that make model changes trustworthy, not just demos: **verifiable rewards** instead of a hackable reward model, **pre-registered experiments with honest negative results**, **behavioral telemetry** (event streaming, funnels, friction metrics) that catches regressions offline evals miss, and **deterministic safety gates** on autonomous actions.
 
 ```text
 🔭  Building   →  RL post-training + behavioral-data platform for a generative shopping agent
 🧪  Measuring  →  GRPO/RLOO/PPO experiments, offline eval vs. live behavioral replay, honest negative results
 🌱  Learning   →  ML platform engineering at scale — streaming ingestion, self-service extraction/training
-🎯  Open to    →  Software Dev Engineer (AI) roles
+🎯  Open to    →  Software Engineer (AI) roles
 ```
 
 ---
