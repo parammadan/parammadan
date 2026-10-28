@@ -29,7 +29,7 @@ I build **robot perception that knows when not to trust itself**. A pick cell ra
 
 ## 🚀 Projects
 
-### 🦾 [AURA-3D](https://github.com/parammadan/aura3d) · [paper](https://github.com/parammadan/aura3d/blob/main/paper/AURA3D_paper.pdf)
+### 🦾 [AURA-3D](https://github.com/parammadan/aura3d) · [paper (DOI)](https://doi.org/10.5281/zenodo.23734027)
 > **Uncertainty-aware perception and drift recovery for a simulated industrial pick cell**, on a UR10e and a **FANUC M-710iC/50** loaded from FANUC's official description. A 0.5° camera bump drops sorting success from 50/50 to 7/50; a fixture-residual **drift monitor** plus robust **SE(3) recalibration** (accepted only if it predicts a held-out reference sphere) recovers **42/50** (p = 6e-11) and cuts wrong picks **251 → 0**, with 0 false alarms in 1,000 frames. In touching-part clutter, a **fine-tuned Mask R-CNN** plus collision-aware grasp ordering sorts **88/100** trays (classical depth: 30). The same code runs on the FANUC arm with only a config change. A learned **pose-risk gate** with conformal bounds, a reproduced **Meta JEPA world model** (given no control authority, since it can't foresee grasp outcome), a **ROS 2** node graph and an ONNX/TensorRT latency study. Simulation only.
 >
 > `Python` · `MuJoCo` · `PyTorch` · `Mask R-CNN` · `SE(3) / hand-eye calibration` · `conformal prediction` · `ROS 2` · `ONNX Runtime / TensorRT` · `Slurm GPU training`
