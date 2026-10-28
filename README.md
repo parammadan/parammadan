@@ -1,7 +1,7 @@
 <h1 align="center">Param Madan</h1>
 
 <p align="center">
-  <b>AI Software Engineer</b> — LLM post-training & eval · generative AI data platforms · OpenSearch contributor
+  <b>AI Software Engineer · Robotics Perception</b> — 3D pose estimation · camera calibration & drift · uncertainty-aware manipulation
 </p>
 
 <p align="center">
@@ -17,29 +17,37 @@
 
 ## 👋 About me
 
-I build **AI systems for LLM-driven agents** — from RL post-training on a real LLM to the data platform that measures whether it's actually working. I care about the parts that make model changes trustworthy, not just demos: **verifiable rewards** instead of a hackable reward model, **pre-registered experiments with honest negative results**, **behavioral telemetry** (event streaming, funnels, friction metrics) that catches regressions offline evals miss, and **deterministic safety gates** on autonomous actions.
+I build **robot perception that knows when not to trust itself**. A pick cell rarely fails loudly: the camera gets bumped half a degree, the pose estimator stays confident, and every grasp lands a few millimetres off. My work is the layer around perception that catches that: **calibration-drift monitoring**, **validated recalibration**, **calibrated pose uncertainty and risk gates against measured grasp tolerances**, and a safe fallback (defer to an operator) when a correction can't be verified. Every experiment is **pre-registered, paired and run on held-out seeds**, negative results included.
 
 ```text
-🔭  Building   →  RL post-training + behavioral-data platform for a generative shopping agent
-🧪  Measuring  →  GRPO/RLOO/PPO experiments, offline eval vs. live behavioral replay, honest negative results
-🌱  Learning   →  ML platform engineering at scale — streaming ingestion, self-service extraction/training
+🔭  Building   →  reliability layer for vision-guided industrial picking (UR10e + FANUC M-710iC/50, MuJoCo)
+🧪  Measuring  →  drift detection, recalibration, pose-risk gating, Mask R-CNN in clutter, world models
+🌱  Learning   →  real-image validation (BOP), MoveIt integration, edge deployment
 ```
 
 ---
 
 ## 🚀 Projects
 
-### 🛍️ [PennyPilot + PennyData](https://github.com/parammadan/pennypilot)
-> A **multi-turn, multilingual RL shopping agent** and the **behavioral-data platform** built to prove it actually improved. SFT (LoRA) → **RLOO post-training** with a **verifiable reward** against a ground-truth catalog (no reward model to hack) and a **structural safety gate** — cart actions without a prior permission grant are impossible to reward, 0 violations across every eval. Real bugs found by dogfooding the agent were fixed through a **pre-registered, guardrail-gated data-recipe loop** — including an actual rollback (v1 broke the model) and an actual "not shipped" call (v2 hit its target metric but breached a guardrail) — before the accepted recipe (v3) shipped a model that topped *both* the offline eval **and** live behavioral replay, resolving a case where the two had been ranking models **oppositely**.
+### 🦾 [AURA-3D](https://github.com/parammadan/aura3d) · [paper](https://github.com/parammadan/aura3d/blob/main/paper/AURA3D_paper.pdf)
+> **Uncertainty-aware perception and drift recovery for a simulated industrial pick cell**, on a UR10e and a **FANUC M-710iC/50** loaded from FANUC's official description. A 0.5° camera bump drops sorting success from 50/50 to 7/50; a fixture-residual **drift monitor** plus robust **SE(3) recalibration** (accepted only if it predicts a held-out reference sphere) recovers **42/50** (p = 6e-11) and cuts wrong picks **251 → 0**, with 0 false alarms in 1,000 frames. In touching-part clutter, a **fine-tuned Mask R-CNN** plus collision-aware grasp ordering sorts **88/100** trays (classical depth: 30). The same code runs on the FANUC arm with only a config change. A learned **pose-risk gate** with conformal bounds, a reproduced **Meta JEPA world model** (given no control authority, since it can't foresee grasp outcome), a **ROS 2** node graph and an ONNX/TensorRT latency study. Simulation only.
 >
-> Behind the agent: **Kafka → S3/DuckDB** streaming + batch ingestion, a behavioral-intelligence layer (funnels, friction metrics, deterministic failure attribution with evidence citations), and a self-service ML layer (login, extraction requests, real Slurm training-job submission) with **PII scrubbing** and **admin-gated SQL** — the ML platform half of the JD, not just the model half.
->
-> `Python` · `PyTorch` · `LoRA / PEFT` · `RL (RLOO · GRPO · PPO)` · `Kafka` · `S3 · DuckDB` · `React + TypeScript`
+> `Python` · `MuJoCo` · `PyTorch` · `Mask R-CNN` · `SE(3) / hand-eye calibration` · `conformal prediction` · `ROS 2` · `ONNX Runtime / TensorRT` · `Slurm GPU training`
 
-### 🛰️ [cre-copilot](https://github.com/parammadan/cre-copilot)
-> **Multi-agent AI orchestration** for live-site incident response on Azure. Hosted Azure OpenAI agents triage real telemetry via **tool calling** over Azure Data Explorer — in a fixed pipeline or a fully **autonomous mode** where an orchestrator agent picks its own read-only tools. A **deterministic confidence + permission gate** decides act-vs-escalate behind an enterprise **AI-safety layer** (blast-radius guard, prompt-injection detection, approval integrity, audit trail); remediation is **human-in-the-loop** (Teams Adaptive Cards + approval) and confirmed by an independent Verifier agent. Plus a **conversational** "Ask CRE Copilot" mode, an eval harness for correlation quality, and structured tracing — deployed on **Azure Container Apps** with a React console.
+### 🎯 [BELIEF-3D](https://github.com/parammadan/belief-3d)
+> **Multimodal 6D pose belief and calibration-aware active vision** (Franka Panda, MuJoCo). Neural pose proposals with geometric refinement raise success on < 50 %-visible objects from 0.853 to **0.985**. A pre-registered **multimodal SE(3) belief** beats a Kalman tracker on rotation (64.8 % → 87.0 %, p = 0.007). Online **extrinsic self-calibration** from known objects lifts task success 0.640 → **0.767** (p = 0.003), and a calibration-aware view objective beats entropy/covariance view selection (0.667 vs 0.533, Holm p = 0.008). Includes a pre-registered *negative* result: task-risk view selection that ignores calibration lost to random views.
 >
-> `Python` · `Azure OpenAI` · `Azure Data Explorer (KQL)` · `React + TypeScript` · `Azure Container Apps` · `Managed Identity` · `FastAPI` · `Teams`
+> `Python` · `MuJoCo` · `6D pose estimation` · `particle / SE(3) belief` · `multi-camera tracking` · `active vision`
+
+### 📷 [Robot Edge Stack](https://github.com/parammadan/robot_edge_stack-main)
+> **Real hardware:** multi-node **ROS 2** perception on an **NVIDIA Jetson Orin Nano** with dual USB cameras. **YOLOv8 + TensorRT** at 24 ms per frame; a bandwidth manager fuses network health (RTT, loss) and `tegrastats` thermal/GPU metrics to throttle perception 15 → 10 → 5 FPS without restarts. Custom C++ message packages, FastDDS discovery server, watchdog, Docker Compose deployment and network-chaos test scripts.
+>
+> `C++17` · `ROS 2 Humble` · `TensorRT` · `YOLOv8` · `Jetson` · `Docker`
+
+### 🛍️ [PennyPilot](https://github.com/parammadan/pennypilot) · [cre-copilot](https://github.com/parammadan/cre-copilot)
+> Also: a multi-turn RL shopping agent (SFT → RLOO with a verifiable reward and a structural safety gate, pre-registered data-recipe loop), and multi-agent incident response on Azure with a deterministic confidence + permission gate and human-in-the-loop remediation.
+>
+> `PyTorch` · `LoRA` · `RL (RLOO · GRPO · PPO)` · `Azure OpenAI` · `React + TypeScript`
 
 ### 🔧 Open source — [OpenSearch Dashboards · search-relevance](https://github.com/opensearch-project/dashboards-search-relevance)
 > Contributing to a **production OpenSearch plugin** used by search-relevance engineers: a **performance fix** replacing O(n²) result matching with id lookup maps ([#910](https://github.com/opensearch-project/dashboards-search-relevance/pull/910)) and **surfacing real experiment errors** instead of a generic failure message ([#911](https://github.com/opensearch-project/dashboards-search-relevance/pull/911)).
@@ -49,6 +57,14 @@ I build **AI systems for LLM-driven agents** — from RL post-training on a real
 ---
 
 ## 🛠️ Toolbox
+
+**Robotics / Perception**
+![ROS2](https://img.shields.io/badge/ROS%202-22314E?style=for-the-badge&logo=ros&logoColor=white)
+![MuJoCo](https://img.shields.io/badge/MuJoCo-1F6FEB?style=for-the-badge&logoColor=white)
+![Perception](https://img.shields.io/badge/3D%20Perception%20%2F%206D%20Pose-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
+![Calibration](https://img.shields.io/badge/Camera%20%26%20Hand--Eye%20Calibration-444444?style=for-the-badge&logoColor=white)
+![TensorRT](https://img.shields.io/badge/TensorRT%20%2F%20ONNX-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
+![Jetson](https://img.shields.io/badge/NVIDIA%20Jetson-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
 
 **Languages**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
@@ -66,12 +82,6 @@ I build **AI systems for LLM-driven agents** — from RL post-training on a real
 ![RAG](https://img.shields.io/badge/RAG%20%2F%20Vector%20Search-FF6F00?style=for-the-badge&logo=databricks&logoColor=white)
 ![MCP](https://img.shields.io/badge/MCP%20%2F%20Tool%20Calling-000000?style=for-the-badge&logo=anthropic&logoColor=white)
 
-**Data Platform**
-![Kafka](https://img.shields.io/badge/Kafka-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)
-![DuckDB](https://img.shields.io/badge/DuckDB-FFF000?style=for-the-badge&logo=duckdb&logoColor=black)
-![AWS S3](https://img.shields.io/badge/AWS%20S3-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-
 **Cloud / Infra**
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
@@ -81,21 +91,13 @@ I build **AI systems for LLM-driven agents** — from RL post-training on a real
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
 
-**Frontend**
-![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-
-**Robotics / Perception**
-![ROS2](https://img.shields.io/badge/ROS2-22314E?style=for-the-badge&logo=ros&logoColor=white)
-![Perception](https://img.shields.io/badge/Perception%20%2F%20Computer%20Vision-5C3EE8?style=for-the-badge&logo=opencv&logoColor=white)
-
 ---
 
 ## 📌 Focus right now
 
-- **RL post-training for LLMs** — GRPO/RLOO/PPO behind one interface, verifiable rewards, pre-registered experiments with honest negative results, forgetting-mitigation via rehearsal.
-- **ML data platforms** — streaming + batch ingestion (Kafka/S3/DuckDB), behavioral telemetry that catches what offline eval misses, self-service extraction/training with governance (PII scrubbing, admin-gated SQL).
-- **Agent orchestration & safety** — deterministic gates on autonomous actions, human-in-the-loop approval, structured tracing, measured performance work (O(n²) → O(n) fixes in production OSS).
+- **Perception you can trust in a workcell**: drift detection, validated recalibration, pose uncertainty calibrated against what the gripper can actually tolerate.
+- **Learned perception under clutter and shift**: fine-tuning detectors and segmenters on synthetic data, and measuring where they still fail.
+- **Honest evaluation**: pre-registered, paired experiments on held-out seeds, with the negative results published next to the positive ones.
 
 ---
 
